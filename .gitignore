@@ -1,0 +1,34 @@
+# editor
+/.idea
+/.vscode
+
+# dependencies
+.env
+.env.backup
+
+# go test -c 生成的二进制文件
+*.test
+
+# go coverage 工具
+*.out
+*.prof
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+
+# 编译文件
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# air - go 重载工具
+tmp/
+.tmp/
+
+# macos
+.DS_Store
