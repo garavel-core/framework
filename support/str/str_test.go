@@ -181,6 +181,19 @@ func TestLcfirst(t *testing.T) {
 	})
 }
 
+func BenchmarkPadRight(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		str.PadRight("❤MultiByte☆", 16)
+	}
+}
+
+func TestPadRight(t *testing.T) {
+	assert.Equal(t, "Alien-=-=-", str.PadRight("Alien", 10, "-="))
+	assert.Equal(t, "Alien     ", str.PadRight("Alien", 10))
+	assert.Equal(t, "❤MultiByte☆     ", str.PadRight("❤MultiByte☆", 16))
+	assert.Equal(t, "❤MultiByte☆❤☆❤☆❤", str.PadRight("❤MultiByte☆", 16, "❤☆"))
+}
+
 // 12840 ns/op，相较于其他函数较慢
 func BenchmarkPlural(b *testing.B) {
 	for i := 0; i < b.N; i++ {

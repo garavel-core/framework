@@ -497,7 +497,19 @@ func PadLeft(value string, length int, pad ...string) string {
 
 // Pad the right side of a string with another.
 func PadRight(value string, length int, pad ...string) string {
-	return ""
+	pads := slices.Get(pad, 0, " ")
+
+	if len(pads) == 0 {
+		return value
+	}
+
+	count := length - utf8.RuneCountInString(value)
+
+	if count < 1 {
+		return value
+	}
+
+	return value + string([]rune(strings.Repeat(pads, count))[:count])
 }
 
 // Parse a Class[@]method style callback into class and method.
